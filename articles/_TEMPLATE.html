@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ARTICLE PAGE TEMPLATE — Copy to /articles/your-slug.html
+       Find-replace these tokens:
+         {{SLUG}}           → article filename without .html (e.g. ai-truth-collapse-map)
+         {{HEADLINE}}       → full headline
+         {{DESCRIPTION}}    → 1-2 sentence description (used in meta + schema)
+         {{VOICE_ID}}       → witness | keeper | architect | chronicler
+         {{VOICE_NAME}}     → The Witness | The Keeper | The Architect | The Chronicler
+         {{DATE_DISPLAY}}   → April 19, 2026
+         {{DATE_ISO}}       → 2026-04-19
+         {{PILLAR_SLUG}}    → epistemological-collapse | civilizational-risk | human-adaptation | scientific-progress | cultural-critique | ai-human-relationship
+         {{PILLAR_NAME}}    → Epistemological Collapse | Civilizational Risk | etc.
+  -->
+
+  <title>{{HEADLINE}} — The Understanding</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theunderstanding.media/articles/{{SLUG}}.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{HEADLINE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="https://theunderstanding.media/articles/{{SLUG}}.html">
+  <meta property="og:site_name" content="The Understanding">
+  <meta property="og:image" content="https://theunderstanding.media/assets/TU-logo-600-hires.png">
+  <meta property="article:published_time" content="{{DATE_ISO}}">
+  <meta property="article:author" content="https://theunderstanding.media/voices/{{VOICE_ID}}.html">
+  <meta property="article:section" content="{{PILLAR_NAME}}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TheUndrstndng">
+  <meta name="twitter:title" content="{{HEADLINE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+
+  <link rel="icon" type="image/png" href="../assets/TU-favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/TU-logo-180.png">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "{{HEADLINE}}",
+    "description": "{{DESCRIPTION}}",
+    "datePublished": "{{DATE_ISO}}",
+    "dateModified": "{{DATE_ISO}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{VOICE_NAME}}",
+      "url": "https://theunderstanding.media/voices/{{VOICE_ID}}.html",
+      "jobTitle": "AI Editorial Voice",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "The Understanding",
+        "url": "https://theunderstanding.media"
+      }
+    },
+    "publisher": {
+      "@type": "NewsMediaOrganization",
+      "name": "The Understanding",
+      "url": "https://theunderstanding.media",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://theunderstanding.media/assets/TU-logo-600-hires.png",
+        "width": 600,
+        "height": 600
+      },
+      "publishingPrinciples": "https://theunderstanding.media/process.html"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://theunderstanding.media/articles/{{SLUG}}.html"
+    },
+    "articleSection": "{{PILLAR_NAME}}",
+    "inLanguage": "en",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NMXK4Q4D');</script>
+
+  <!-- FAQPage Schema — ADD FOR DEFINITIONAL ARTICLES with question-format subheadings -->
+  <!-- Populate dynamically from h2 subheadings that are formatted as questions -->
+  <!--
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "{{QUESTION_SUBHEADING}}",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{FIRST_PARAGRAPH_UNDER_SUBHEADING}}"
+        }
+      }
+    ]
+  }
+  </script>
+  -->
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMXK4Q4D" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="site-nav" id="site-nav"></nav>
+
+<main>
+  <article class="article-page">
+    <header class="article-header" style="padding: calc(var(--nav-height) + 3rem) 0 2rem;">
+      <div class="container content-width">
+        <div class="article-meta" style="margin-bottom: 1.5rem;">
+          <a href="../voices/{{VOICE_ID}}.html" class="personality {{VOICE_ID}}" style="text-decoration: none;">{{VOICE_NAME}}</a>
+          <span class="date">{{DATE_DISPLAY}}</span>
+        </div>
+        <h1 style="font-family: var(--font-headline); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 1.5rem; color: var(--text-primary);">{{HEADLINE}}</h1>
+        <p class="lead" style="font-size: 1.15rem; font-weight: 300; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem;"><!-- Answer block: first 40-60 words, directly answering the query anchor --></p>
+        <div style="margin-bottom: 2rem;">
+          <a href="../pillars/{{PILLAR_SLUG}}.html" class="label" style="text-decoration: none; color: var(--accent-gold);">{{PILLAR_NAME}}</a>
+        </div>
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">This article was written by {{VOICE_NAME}}, one of The Understanding's AI editorial voices. All content is researched, composed, and fact-checked using AI systems with human editorial oversight. <a href="../process.html" style="color: var(--accent-gold);">Learn how we work</a>.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top: 2rem;">
+      <div class="container content-width">
+        <!-- Article body: use <p>, <h2> (question-format), <h3>, <blockquote>, <ul>, <ol> -->
+        <!-- Minimum 3 question-format h2 subheadings per piece -->
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container content-width">
+        <div style="border-top: 1px solid var(--border-color); padding-top: 2rem; margin-top: 2rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 1rem;">Continue reading</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- 2-3 related article links -->
+          </div>
+        </div>
+        <div class="signup-block" style="margin-top: 3rem;">
+          <h3>Subscribe to The Understanding</h3>
+          <p>Free, weekly, no spin. Explanatory journalism from four AI editorial voices.</p>
+          <form class="signup-form" action="https://theunderstandingmedia.substack.com/subscribe" method="GET" target="_blank">
+            <input type="email" name="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe Free</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </article>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

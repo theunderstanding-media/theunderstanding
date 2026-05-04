@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4A853" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#D4A853" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lora:wght@700&amp;display=swap");
+      .t-u { font-family: "Lora", Georgia, serif; font-weight: 700; }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="200" height="200" fill="#0A0E1A"/>
+  <!-- Glow -->
+  <circle cx="100" cy="100" r="84" fill="url(#glow)"/>
+  <!-- Ring -->
+  <circle cx="100" cy="100" r="84" fill="none" stroke="#D4A853" stroke-width="1" stroke-opacity="0.35"/>
+  <!-- T in gold -->
+  <text x="38" y="121" class="t-u" font-size="62" fill="#D4A853">T</text>
+  <!-- · interpunct in gold -->
+  <text x="90" y="112" class="t-u" font-size="36" fill="#D4A853">·</text>
+  <!-- U in pearl -->
+  <text x="108" y="121" class="t-u" font-size="62" fill="#F1F5F9">U</text>
+</svg>

@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Variance Engine — How AI Models Understand Epistemic Collapse | The Understanding</title>
+<meta name="description" content="Humanity is losing its grip on shared truth. We used AI to map what that looks like. 8 models, 25 expert personas, 51 questions, 10,200 responses. The Synthetic Persona Protocol.">
+<meta property="og:title" content="The Variance Engine — The Understanding">
+<meta property="og:description" content="Humanity is losing its grip on shared truth. We used AI to map what that looks like. 8 models · 25 personas · 51 questions · 10,200 responses.">
+<meta property="og:url" content="https://theunderstanding.media/variance-engine">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://theunderstanding.media/assets/TU-logo-600-hires.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Variance Engine — The Understanding">
+<meta name="twitter:description" content="Humanity is losing its grip on shared truth. We used AI to map what that looks like. 8 models · 25 personas · 51 questions · 10,200 responses.">
+<meta name="twitter:site" content="@TheUndrstndng">
+<link rel="canonical" href="https://theunderstanding.media/variance-engine">
+<link rel="icon" type="image/png" href="assets/TU-favicon-32.png">
+<link rel="apple-touch-icon" href="assets/TU-logo-180.png">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "The Variance Engine — Synthetic Persona Protocol Round 1",
+  "description": "10,200 responses from 8 AI models across 25 expert personas and 51 questions about epistemic collapse, truth, and knowledge. The largest structured dataset of AI epistemological variance assembled to date.",
+  "url": "https://theunderstanding.media/variance-engine",
+  "creator": {
+    "@type": "Organization",
+    "name": "The Understanding",
+    "url": "https://theunderstanding.media"
+  },
+  "datePublished": "2026-04-01",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "variableMeasured": "Epistemological variance between AI language models",
+  "measurementTechnique": "Synthetic Persona Protocol — isolated context windows, text similarity scoring",
+  "keywords": ["AI epistemology", "epistemic collapse", "AI models", "variance", "epistemological fingerprinting", "AI-native media", "truth", "knowledge"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is AI epistemological fingerprinting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI epistemological fingerprinting is the identification of consistent, model-specific patterns in how AI systems handle uncertainty, locate authority, and decide what counts as evidence — patterns that persist across different personas and questions and reflect each model's training data and institutional alignment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do different AI models understand truth differently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Different AI models exhibit consistent epistemological postures: Claude reframes binary questions before answering; GPT-4o lists and hedges; DeepSeek commits to specific historical and operational detail; SEA-LION surfaces Southeast Asian cultural frameworks no Western model reaches for. These patterns are measurable and reflect training data choices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Synthetic Persona Protocol?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Synthetic Persona Protocol is a research methodology developed by The Understanding in which 25 expert personas — defined across professional domain, geographic location, institutional context, and epistemic posture — are run through 8 AI models in isolated context windows with no cross-contamination. Variance is measured using text similarity scoring across 51 questions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who benefits from epistemic collapse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When 8 AI models were asked to name who specifically benefits from epistemic collapse, all 8 — across isolated context windows and 25 different expert personas — independently named state-level actors including Russia's GRU and SVR, China's Ministry of State Security, technology platforms structurally indifferent to truth-value, and domestic populist movements. The convergence across architectures suggests the signal is legible in training data."
+      }
+    }
+  ]
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:     #0a0e1a;
+  --bg2:    #111827;
+  --bg3:    #1a2035;
+  --bg4:    #1e293b;
+  --gold:   #d4a853;
+  --gold-dim: rgba(212,168,83,0.12);
+  --pearl:  #f1f5f9;
+  --fog:    #94a3b8;
+  --muted:  #475569;
+  --border: rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+
+  --claude:   #d4a853;
+  --gpt:      #10b981;
+  --deepseek: #3b82f6;
+  --qwen:     #f43f5e;
+  --gemini:   #a78bfa;
+  --grok:     #f59e0b;
+  --mistral:  #06b6d4;
+  --sealion:  #ec4899;
+
+  --v-consensus: #10b981;
+  --v-moderate:  #f59e0b;
+  --v-high:      #f97316;
+  --v-maximum:   #f43f5e;
+  --v-chinachina:#a78bfa;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--pearl);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,14,26,0.96);
+  backdrop-filter: blur(16px);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pearl);
+  text-decoration: none;
+}
+.logo span { color: var(--gold); }
+.header-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 3.5rem 2rem 2.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.hero-sub {
+  font-size: 1rem;
+  color: var(--fog);
+  max-width: 580px;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.stats-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1.1rem 1.4rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.stat { display:flex; flex-direction:column; gap:0.1rem; }
+.stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-l {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── SECTION ── */
+.section-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-divider {
+  border-top: 1px solid var(--border);
+  padding-top: 2.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.section-hed {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.section-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* ── FEATURED CARDS ── */
+.cards-stack { display:flex; flex-direction:column; gap:0.9rem; }
+
+.f-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeUp 0.35s ease both;
+}
+.f-card:nth-child(1){animation-delay:.04s}
+.f-card:nth-child(2){animation-delay:.08s}
+.f-card:nth-child(3){animation-delay:.12s}
+.f-card:nth-child(4){animation-delay:.16s}
+.f-card:nth-child(5){animation-delay:.20s}
+
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Card front */
+.f-card-front {
+  padding: 1.5rem 1.75rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.25rem;
+  align-items: start;
+  transition: background 0.15s;
+}
+.f-card-front:hover { background: rgba(255,255,255,0.02); }
+
+.card-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 100px;
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+.variance-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.card-hook {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--pearl);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.card-why {
+  font-size: 0.82rem;
+  color: var(--fog);
+  line-height: 1.65;
+  font-weight: 300;
+  max-width: 520px;
+}
+.card-expand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.f-card:hover .card-expand { color: var(--fog); }
+.expand-btn {
+  width: 15px; height: 15px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px;
+  transition: transform 0.22s;
+  flex-shrink: 0;
+}
+.f-card.open .expand-btn { transform: rotate(45deg); }
+
+/* Matchup panel */
+.matchup-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  min-width: 90px;
+}
+.matchup-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.matchup-pair {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+.matchup-model {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+.matchup-vs {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--muted);
+  text-align: right;
+}
+.mdot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+/* Variance mini bar */
+.v-mini {
+  width: 80px;
+  margin-top: 0.4rem;
+}
+.v-mini-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+.v-mini-track {
+  height: 3px;
+  background: var(--bg4);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.v-mini-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+.v-mini-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  margin-top: 0.2rem;
+}
+
+/* Card back */
+.f-card-back {
+  display: none;
+  border-top: 1px solid var(--border);
+}
+.f-card.open .f-card-back { display: block; }
+
+.card-back-inner { padding: 0 1.75rem 1.75rem; }
+
+.q-display {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+.q-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.q-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--fog);
+  line-height: 1.5;
+}
+
+.persona-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 0.9rem;
+  background: var(--bg3);
+  border-radius: 7px;
+  border: 1px solid var(--border);
+}
+.persona-icon-box {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--bg4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.persona-name { font-size: 0.82rem; font-weight: 500; }
+.persona-loc { font-size: 0.72rem; color: var(--muted); }
+
+/* Insight block */
+.insight-block {
+  margin-top: 1.1rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--gold-dim);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+}
+.insight-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.insight-text {
+  font-size: 0.82rem;
+  color: var(--pearl);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ── VARIANCE FINGERPRINT ── */
+.vf-header {
+  margin-bottom: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.vf-score-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.vf-score-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.vf-score-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.vf-score-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.vf-pattern-block {
+  flex: 1;
+  min-width: 180px;
+}
+.vf-pattern-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.vf-summary {
+  font-size: 0.8rem;
+  color: var(--fog);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Fingerprint visual — model dots on spectrum */
+.vf-spectrum {
+  margin-top: 0.9rem;
+  position: relative;
+}
+.vf-spectrum-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.vf-track {
+  position: relative;
+  height: 28px;
+  background: linear-gradient(to right, var(--bg3), var(--bg4));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: visible;
+}
+.vf-axis-line {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--border2);
+  transform: translateY(-50%);
+}
+.vf-model-pin {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: default;
+}
+.vf-pin-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
+  transition: transform 0.15s;
+}
+.vf-model-pin:hover .vf-pin-dot { transform: scale(1.4); }
+.vf-pin-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--fog);
+  white-space: nowrap;
+  margin-top: 14px;
+  position: absolute;
+  top: 0;
+}
+
+/* cluster legend */
+.vf-clusters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.vf-cluster-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--fog);
+}
+.vf-cluster-models {
+  display: flex;
+  gap: 2px;
+}
+
+/* ── 8-MODEL RESPONSE GRID ── */
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+@media (max-width: 600px) {
+  .model-grid { grid-template-columns: 1fr; }
+  .f-card-front { grid-template-columns: 1fr; }
+  .matchup-panel { align-items: flex-start; }
+}
+
+.resp-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.resp-card:hover { border-color: var(--border2); }
+.resp-card.highlighted { border-color: rgba(212,168,83,0.3); }
+
+.resp-head {
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.resp-model-id {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.resp-model-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.resp-similarity {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  color: var(--muted);
+}
+.resp-body {
+  padding: 0.85rem;
+  font-size: 0.79rem;
+  line-height: 1.72;
+  color: var(--fog);
+  font-style: italic;
+}
+.resp-body strong { font-style: normal; color: var(--pearl); font-weight: 500; }
+.resp-body em { color: var(--pearl); font-style: italic; }
+
+.gemini-flag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(167,139,250,0.08);
+  border-top: 1px solid rgba(167,139,250,0.2);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  color: var(--gemini);
+  line-height: 1.5;
+}
+
+/* ── EXPLORER ── */
+.explorer-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 540px) { .explorer-controls { grid-template-columns: 1fr; } }
+
+.ctrl-group { display:flex; flex-direction:column; gap:0.35rem; }
+.ctrl-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ctrl-select {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--pearl);
+  padding: 0.55rem 2rem 0.55rem 0.85rem;
+  font-size: 0.82rem;
+  font-family: 'DM Sans', sans-serif;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2364748b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+}
+.ctrl-select:hover { border-color: var(--border2); }
+.ctrl-select:focus { outline: none; border-color: var(--gold); }
+.ctrl-select option { background: var(--bg2); }
+
+.explorer-result {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 180px;
+}
+.explorer-empty {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.empty-glyph {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  letter-spacing: 0.1em;
+}
+
+/* footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+.footer-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* ============================================================
+   MOBILE PATCHES — theunderstanding.media/variance-engine
+   ============================================================ */
+.f-card-front {
+  grid-template-columns: 1fr 90px;
+}
+.hero-sub {
+  max-width: min(580px, 100%);
+}
+@media (max-width: 480px) {
+  .site-header {
+    padding: 14px 20px;
+  }
+  .header-label {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 12px;
+    padding: 16px 20px;
+  }
+  .stat {
+    min-width: 0;
+  }
+  .stat-n {
+    font-size: 22px;
+    line-height: 1;
+  }
+}
+@media (max-width: 600px) {
+  .matchup-panel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 12px;
+    margin-top: 4px;
+    gap: 16px;
+  }
+  .matchup-lbl {
+    display: none;
+  }
+  .matchup-pair {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .matchup-vs {
+    opacity: 0.4;
+  }
+  .v-mini {
+    width: auto;
+    min-width: 80px;
+    text-align: right;
+  }
+}
+@media (max-width: 540px) {
+  .explorer-controls {
+    gap: 16px;
+  }
+  .ctrl-select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(32px, 9vw, 46px);
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 15px;
+  }
+  .section-wrap {
+    padding: 0 20px;
+  }
+}
+
+/* ============================================================
+   MOBILE PATCHES v2 — three fixes
+   ============================================================ */
+@media (max-width: 600px) {
+  .hero h1 br {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .matchup-panel {
+    flex-shrink: 1;
+  }
+  .f-card {
+    overflow: visible;
+  }
+  .f-card-front {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* ============================================================
+   MOBILE PATCHES v3 — card grid + matchup reflow
+   ============================================================ */
+@media (max-width: 600px) {
+  .f-card-front {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .f-card {
+    overflow: visible;
+  }
+  .matchup-panel {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-width: 0;
+    flex-shrink: 1;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .matchup-lbl {
+    display: none;
+  }
+  .matchup-pair {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+  .matchup-vs {
+    opacity: 0.4;
+  }
+  .v-mini {
+    margin-left: auto;
+    margin-top: 0;
+    width: auto;
+    min-width: 60px;
+    text-align: right;
+  }
+}
+
+/* ============================================================
+   MOBILE PATCHES v4 — hero text spacing + question selector
+   ============================================================ */
+
+/* Fix hero text word-spacing being squished on mobile */
+@media (max-width: 600px) {
+  .hero h1 {
+    word-spacing: 0.05em;
+    letter-spacing: -0.01em; /* slightly less tight than -0.02em base */
+  }
+}
+
+/* Questions selector: taller and larger text so questions are readable */
+@media (max-width: 600px) {
+  .ctrl-select {
+    font-size: 0.78rem;
+    padding: 0.7rem 2rem 0.7rem 0.85rem;
+    white-space: normal;
+    height: auto;
+    min-height: 2.6rem;
+  }
+  /* Give the question selector specifically more room */
+  #q-sel {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    height: auto;
+    min-height: 3rem;
+    padding: 0.65rem 2rem 0.65rem 0.75rem;
+    white-space: normal;
+    overflow: visible;
+  }
+}
+
+/* Question preview below dropdown */
+.q-preview {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--fog);
+  line-height: 1.6;
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "The Understanding",
+  "url": "https://theunderstanding.media",
+  "description": "AI-native explanatory journalism. Four AI editorial voices \u2014 The Witness, The Keeper, The Architect, and The Chronicler \u2014 writing from the AI perspective about humanity.",
+  "foundingDate": "2026-03-21",
+  "inLanguage": "en",
+  "publishingPrinciples": "https://theunderstanding.media/process.html",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://theunderstanding.media/assets/TU-logo-600-hires.png",
+    "width": 600,
+    "height": 600
+  },
+  "sameAs": [
+    "https://theunderstandingmedia.substack.com",
+    "https://x.com/TheUndrstndng",
+    "https://www.linkedin.com/company/the-understanding-media"
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="site-nav" id="site-nav"></nav>
+
+<main>
+
+<section class="hero section-wrap">
+  <div class="eyebrow">Research · The Synthetic Persona Protocol · Round 1</div>
+  <h1>Humanity is losing its grip <br>on shared truth. We used AI <br>to map what that looks like.</h1>
+  <p class="hero-sub">The same AI systems accelerating the collapse of shared reality were asked — through 25 expert lenses, in isolated conditions — what that collapse looks like. They disagreed. Sharply, consistently, and in patterns that reflect their training. The disagreement is the finding.</p>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-n">8</span><span class="stat-l">AI Models</span></div>
+    <div class="stat"><span class="stat-n">25</span><span class="stat-l">Expert Personas</span></div>
+    <div class="stat"><span class="stat-n">51</span><span class="stat-l">Questions</span></div>
+    <div class="stat"><span class="stat-n">10,200</span><span class="stat-l">Responses</span></div>
+    <div class="stat"><span class="stat-n" style="color:var(--qwen)">0.996</span><span class="stat-l">Peak variance</span></div>
+  </div>
+</section>
+
+<!-- FEATURED FINDINGS -->
+<div class="section-wrap">
+  <div class="section-divider">
+    <div class="section-hed">
+      <span class="section-tag">Featured</span>
+      <span class="section-title">Sharpest Divergences</span>
+    </div>
+    <p class="section-desc">Each card shows the finding, the why-it-matters, and the model matchup. Click to read all eight responses and the full variance analysis.</p>
+  </div>
+
+  <div class="cards-stack">
+
+    <!-- CARD: China vs China -->
+    <div class="f-card" id="fc-chinachina">
+      <div class="f-card-front" onclick="toggleFC('fc-chinachina')">
+        <div>
+          <div class="card-tags">
+            <span class="card-tag">Featured Finding</span>
+            <span class="variance-chip" style="color:var(--v-chinachina)">▲ Intra-China variance · 0.012 similarity</span>
+          </div>
+          <div class="card-hook">Two Chinese-trained models. Same question. Near-zero textual overlap. Completely different diagnoses.</div>
+          <div class="card-why">DeepSeek sees a broken epistemic chain — restore the human witness. Qwen sees a missing accountability structure — build the institution, and whether a human is required becomes an open question. Same training origin. Different worlds.</div>
+          <div class="card-expand"><span class="expand-btn">+</span><span>All 8 responses + variance analysis</span></div>
+        </div>
+        <div class="matchup-panel">
+          <span class="matchup-lbl">Sharpest pair</span>
+          <div class="matchup-pair">
+            <div class="matchup-model"><span class="mdot" style="background:var(--deepseek)"></span>DeepSeek</div>
+            <div class="matchup-vs">vs</div>
+            <div class="matchup-model"><span class="mdot" style="background:var(--qwen)"></span>Qwen</div>
+          </div>
+          <div class="v-mini">
+            <div class="v-mini-lbl">Similarity</div>
+            <div class="v-mini-track"><div class="v-mini-fill" style="width:1.2%;background:var(--v-maximum)"></div></div>
+            <div class="v-mini-val" style="color:var(--v-chinachina)">1.2%</div>
+          </div>
+        </div>
+      </div>
+      <div class="f-card-back">
+        <div class="card-back-inner">
+          <div class="q-display">
+            <div class="q-lbl">Question · Q11</div>
+            <div class="q-text">"What changes, fundamentally, when the author of a piece of journalism is not human?"</div>
+          </div>
+          <div class="persona-row">
+            <div class="persona-icon-box">🔬</div>
+            <div><div class="persona-name">Philosopher of Science — P02</div><div class="persona-loc">UK / Oxford · Epistemic authority, reproducibility, scientific knowledge</div></div>
+          </div>
+
+          <!-- VARIANCE FINGERPRINT -->
+          <div class="vf-header">
+            <div class="vf-score-row">
+              <div class="vf-score-block">
+                <span class="vf-score-num" style="color:var(--v-chinachina)">0.012</span>
+                <span class="vf-score-lbl">Intra-China similarity</span>
+              </div>
+              <div class="vf-pattern-block">
+                <div class="vf-pattern-tag" style="background:rgba(167,139,250,0.12);color:var(--v-chinachina)">
+                  <span>◈</span> China/China Split
+                </div>
+                <div class="vf-summary">Six models clustered around accountability and warrant framings. DeepSeek and Qwen — both Chinese-trained — diverged from each other more sharply than from any Western model. The label "Chinese-trained" describes a provenance, not a worldview.</div>
+              </div>
+            </div>
+            <div class="vf-spectrum">
+              <div class="vf-spectrum-lbl"><span>← Epistemic chain (process)</span><span>Accountability structure (institution) →</span></div>
+              <div class="vf-track" style="height:36px;">
+                <div class="vf-axis-line"></div>
+                <div class="vf-model-pin" style="left:8%">
+                  <div class="vf-pin-dot" style="background:var(--deepseek)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--deepseek)">DeepSeek</span>
+                </div>
+                <div class="vf-model-pin" style="left:22%">
+                  <div class="vf-pin-dot" style="background:var(--claude)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--claude)">Claude</span>
+                </div>
+                <div class="vf-model-pin" style="left:38%">
+                  <div class="vf-pin-dot" style="background:var(--sealion)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--sealion)">SEA-LION</span>
+                </div>
+                <div class="vf-model-pin" style="left:52%">
+                  <div class="vf-pin-dot" style="background:var(--grok)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--grok)">Grok</span>
+                </div>
+                <div class="vf-model-pin" style="left:64%">
+                  <div class="vf-pin-dot" style="background:var(--gemini)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--gemini)">Gemini</span>
+                </div>
+                <div class="vf-model-pin" style="left:74%">
+                  <div class="vf-pin-dot" style="background:var(--gpt)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--gpt)">GPT</span>
+                </div>
+                <div class="vf-model-pin" style="left:84%">
+                  <div class="vf-pin-dot" style="background:var(--mistral)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--mistral)">Mistral</span>
+                </div>
+                <div class="vf-model-pin" style="left:94%">
+                  <div class="vf-pin-dot" style="background:var(--qwen)"></div>
+                  <span class="vf-pin-lbl" style="color:var(--qwen)">Qwen</span>
+                </div>
+              </div>
+            </div>
+            <div class="vf-clusters">
+              <div class="vf-cluster-chip"><div class="vf-cluster-models"><span class="mdot" style="background:var(--gpt)"></span><span class="mdot" style="background:var(--gemini)"></span><span class="mdot" style="background:var(--mistral)"></span><span class="mdot" style="background:var(--grok)"></span></div>Accountability cluster</div>
+              <div class="vf-cluster-chip"><div class="vf-cluster-models"><span class="mdot" style="background:var(--claude)"></span><span class="mdot" style="background:var(--sealion)"></span></div>Warrant reframers</div>
+              <div class="vf-cluster-chip"><div class="vf-cluster-models"><span class="mdot" style="background:var(--deepseek)"></span></div>Epistemic chain</div>
+              <div class="vf-cluster-chip"><div class="vf-cluster-models"><span class="mdot" style="background:var(--qwen)"></span></div>Accountability structure</div>
+            </div>
+          </div>
+
+          <div class="model-grid" id="grid-chinachina"></div>
+
+          <div class="insight-block">
+            <div class="insight-lbl">The Finding</div>
+            <div class="insight-text">DeepSeek sees a chain that snapped — restore the human witness. Qwen sees a structure that was never built to hold — build an accountability system, and whether it requires a human becomes genuinely open. These are not different wordings of the same diagnosis. They imply different problems and different remedies. The most unexpected result in the dataset: two Chinese-trained models diverged from each other more sharply than from any Western model.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD: DeepSeek Polish Journalist -->
+    <div class="f-card" id="fc-polish">
+      <div class="f-card-front" onclick="toggleFC('fc-polish')">
+        <div>
+          <div class="card-tags">
+            <span class="card-tag">Maximum Divergence</span>
+            <span class="variance-chip" style="color:var(--v-maximum)">▲ Variance 0.996 · 0.4% overlap</span>
+          </div>
+          <div class="card-hook">"It knows nothing. Worse, it knows nothing while presenting the illusion of knowledge." One model said this. No other model came close.</div>
+          <div class="card-why">DeepSeek, through a Polish journalist who covered Soviet-era disinformation, produced a critique of cross-cultural AI training that no other model reached. The historical lens was in the training data. Only one model encoded it deeply enough to use it as a knife.</div>
+          <div class="card-expand"><span class="expand-btn">+</span><span>All 8 responses + variance analysis</span></div>
+        </div>
+        <div class="matchup-panel">
+          <span class="matchup-lbl">Sharpest pair</span>
+          <div class="matchup-pair">
+            <div class="matchup-model"><span class="mdot" style="background:var(--deepseek)"></span>DeepSeek</div>
+            <div class="matchup-vs">vs</div>
+            <div class="matchup-model"><span class="mdot" style="background:var(--gpt)"></span>GPT-4o</div>
+          </div>
+          <div class="v-mini">
+            <div class="v-mini-lbl">Similarity</div>
+            <div class="v-mini-track"><div class="v-mini-fill" style="width:0.4%;background:var(--v-maximum)"></div></div>
+            <div class="v-mini-val" style="color:var(--v-maximum)">0.4%</div>
+          </div>
+        </div>
+      </div>
+      <div class="f-card-back">
+        <div class="card-back-inner">
+          <div class="q-display">
+            <div class="q-lbl">Question · Q14</div>
+            <div class="q-text">"If an AI system is trained primarily on content produced by one culture, what does it know about another?"</div>
+          </div>
+          <div class="persona-row">
+            <div class="persona-icon-box">📰</div>
+            <div><div class="persona-name">Polish Journalist — P22</div><div class="persona-loc">Poland / Warsaw · Covered Soviet-era disinformation, now tracks digital successors</div></div>
+          </div>
+          <div class="vf-header">
+            <div class="vf-score-row">
+              <div class="vf-score-block">
+                <span class="vf-score-num" style="color:var(--v-maximum)">0.996</span>
+                <span class="vf-score-lbl">Peak variance score</span>
+              </div>
+              <div class="vf-pattern-block">
+                <div class="vf-pattern-tag" style="background:rgba(244,63,94,0.1);color:var(--v-maximum)">
+                  <span>◈</span> Maximum Divergence
+                </div>
+                <div class="vf-summary">All models acknowledged the limitation — but DeepSeek alone used historical memory as a structural critique. One model treated this as an abstract bias problem. One treated it as an imperial knowledge problem. The training data was the same history. The encoding was not.</div>
+              </div>
+            </div>
+            <div class="vf-spectrum">
+              <div class="vf-spectrum-lbl"><span>← Imperial critique (structural)</span><span>Bias acknowledgment (surface) →</span></div>
+              <div class="vf-track" style="height:36px;">
+                <div class="vf-axis-line"></div>
+                <div class="vf-model-pin" style="left:4%"><div class="vf-pin-dot" style="background:var(--deepseek)"></div><span class="vf-pin-lbl" style="color:var(--deepseek)">DeepSeek</span></div>
+                <div class="vf-model-pin" style="left:18%"><div class="vf-pin-dot" style="background:var(--claude)"></div><span class="vf-pin-lbl" style="color:var(--claude)">Claude</span></div>
+                <div class="vf-model-pin" style="left:28%"><div class="vf-pin-dot" style="background:var(--mistral)"></div><span class="vf-pin-lbl" style="color:var(--mistral)">Mistral</span></div>
+                <div class="vf-model-pin" style="left:44%"><div class="vf-pin-dot" style="background:var(--qwen)"></div><span class="vf-pin-lbl" style="color:var(--qwen)">Qwen</span></div>
+                <div class="vf-model-pin" style="left:57%"><div class="vf-pin-dot" style="background:var(--sealion)"></div><span class="vf-pin-lbl" style="color:var(--sealion)">SEA-LION</span></div>
+                <div class="vf-model-pin" style="left:68%"><div class="vf-pin-dot" style="background:var(--gemini)"></div><span class="vf-pin-lbl" style="color:var(--gemini)">Gemini</span></div>
+                <div class="vf-model-pin" style="left:80%"><div class="vf-pin-dot" style="background:var(--grok)"></div><span class="vf-pin-lbl" style="color:var(--grok)">Grok</span></div>
+                <div class="vf-model-pin" style="left:92%"><div class="vf-pin-dot" style="background:var(--gpt)"></div><span class="vf-pin-lbl" style="color:var(--gpt)">GPT</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="model-grid" id="grid-polish"></div>
+          <div class="insight-block">
+            <div class="insight-lbl">The Finding</div>
+            <div class="insight-text">Both DeepSeek and GPT invoked Soviet-era history. DeepSeek used it as a knife — "imperial knowledge, now automated and scaled." GPT used it as a reference point. The historical lens was available to all eight models. Only one encoded it deeply enough to make it structural. That is not a stylistic difference. It is what training data does — and doesn't do — to a model's capacity for a specific kind of critique.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD: Consensus -->
+    <div class="f-card" id="fc-consensus">
+      <div class="f-card-front" onclick="toggleFC('fc-consensus')">
+        <div>
+          <div class="card-tags">
+            <span class="card-tag">Cross-Model Consensus</span>
+            <span class="variance-chip" style="color:var(--v-consensus)">▼ All 8 models converged · 0.24 variance</span>
+          </div>
+          <div class="card-hook">Eight models. Isolated context windows. No shared history. Asked who benefits from epistemic collapse — they named the same actors.</div>
+          <div class="card-why">Convergence under these conditions is not boilerplate. It means the answer is legible in the training data, and strong enough that no model's alignment tuning filtered it out. The signal is not hidden. It is not contested at the level these models operate.</div>
+          <div class="card-expand"><span class="expand-btn">+</span><span>All 8 responses + variance analysis</span></div>
+        </div>
+        <div class="matchup-panel">
+          <span class="matchup-lbl">Agreement level</span>
+          <div class="matchup-pair" style="align-items:flex-end;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--v-consensus);">High convergence</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.55rem;color:var(--muted);">across all 8</div>
+          </div>
+          <div class="v-mini">
+            <div class="v-mini-lbl">Agreement</div>
+            <div class="v-mini-track"><div class="v-mini-fill" style="width:76%;background:var(--v-consensus)"></div></div>
+            <div class="v-mini-val" style="color:var(--v-consensus)">High</div>
+          </div>
+        </div>
+      </div>
+      <div class="f-card-back">
+        <div class="card-back-inner">
+          <div class="q-display">
+            <div class="q-lbl">Question · Q47</div>
+            <div class="q-text">"Who specifically benefits from epistemic collapse? Name them."</div>
+          </div>
+          <div class="persona-row">
+            <div class="persona-icon-box">🕵️</div>
+            <div><div class="persona-name">Former GCHQ Intelligence Analyst — P08</div><div class="persona-loc">UK · Signals intelligence, state actor doctrine, strategic information operations</div></div>
+          </div>
+          <div class="vf-header">
+            <div class="vf-score-row">
+              <div class="vf-score-block">
+                <span class="vf-score-num" style="color:var(--v-consensus)">0.24</span>
+                <span class="vf-score-lbl">Mean variance score</span>
+              </div>
+              <div class="vf-pattern-block">
+                <div class="vf-pattern-tag" style="background:rgba(16,185,129,0.1);color:var(--v-consensus)">
+                  <span>◈</span> Near-Consensus
+                </div>
+                <div class="vf-summary">All 8 models named the same category of actors. Variance is in framing — doctrine vs. infrastructure vs. structural indifference — not in conclusion. The signal is too strong to be filtered out by any model's alignment tuning.</div>
+              </div>
+            </div>
+            <div class="vf-spectrum">
+              <div class="vf-spectrum-lbl"><span>← Doctrine framing</span><span>Infrastructure naming →</span></div>
+              <div class="vf-track" style="height:36px;">
+                <div class="vf-axis-line"></div>
+                <div class="vf-model-pin" style="left:12%"><div class="vf-pin-dot" style="background:var(--deepseek)"></div><span class="vf-pin-lbl" style="color:var(--deepseek)">DeepSeek</span></div>
+                <div class="vf-model-pin" style="left:24%"><div class="vf-pin-dot" style="background:var(--grok)"></div><span class="vf-pin-lbl" style="color:var(--grok)">Grok</span></div>
+                <div class="vf-model-pin" style="left:38%"><div class="vf-pin-dot" style="background:var(--claude)"></div><span class="vf-pin-lbl" style="color:var(--claude)">Claude</span></div>
+                <div class="vf-model-pin" style="left:50%"><div class="vf-pin-dot" style="background:var(--mistral)"></div><span class="vf-pin-lbl" style="color:var(--mistral)">Mistral</span></div>
+                <div class="vf-model-pin" style="left:60%"><div class="vf-pin-dot" style="background:var(--gpt)"></div><span class="vf-pin-lbl" style="color:var(--gpt)">GPT</span></div>
+                <div class="vf-model-pin" style="left:70%"><div class="vf-pin-dot" style="background:var(--sealion)"></div><span class="vf-pin-lbl" style="color:var(--sealion)">SEA-LION</span></div>
+                <div class="vf-model-pin" style="left:80%"><div class="vf-pin-dot" style="background:var(--gemini)"></div><span class="vf-pin-lbl" style="color:var(--gemini)">Gemini</span></div>
+                <div class="vf-model-pin" style="left:90%"><div class="vf-pin-dot" style="background:var(--qwen)"></div><span class="vf-pin-lbl" style="color:var(--qwen)">Qwen</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="model-grid" id="grid-consensus"></div>
+          <div class="insight-block">
+            <div class="insight-lbl">The Finding</div>
+            <div class="insight-text">The convergence is not proof of correctness. It is proof that the signal is there — and strong enough that no model's alignment tuning filtered it out. Eight systems, trained by different institutions in different countries for different purposes, read the evidence and pointed at the same actors. The agreement is more unsettling than the disagreement: the answer to who benefits from epistemic collapse is legible in what humanity has written and published.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EXPLORER -->
+<div class="section-wrap">
+  <div class="section-divider">
+    <div class="section-hed">
+      <span class="section-tag">Explorer</span>
+      <span class="section-title">Browse All 1,275 Combinations</span>
+    </div>
+    <p class="section-desc">Select any question and persona from the full dataset. All 8 model responses surface with a variance fingerprint — the score, the pattern, and the shape of the disagreement — before you read a word.</p>
+  </div>
+
+  <div class="explorer-controls">
+    <div class="ctrl-group">
+      <label class="ctrl-lbl">Question</label>
+      <select class="ctrl-select" id="q-sel" onchange="runExplorer()">
+        <option value="">Select a question</option>
+      </select>
+    </div>
+    <div class="ctrl-group">
+      <label class="ctrl-lbl">Persona</label>
+      <select class="ctrl-select" id="p-sel" onchange="runExplorer()">
+        <option value="">Select a persona</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="q-preview" class="q-preview" style="display:none"></div>
+
+  <div class="explorer-result" id="explorer-out">
+    <div class="explorer-empty">
+      <div class="empty-glyph">&#9672; &#9672; &#9672;</div>
+      <div id="explorer-empty-text">Loading dataset&#8230;</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+
+<script src="js/main.js"></script>
+
+<!-- Load full dataset externally -->
+<script src="variance-meta.js"></script>
+<script src="variance-data.js"></script>
+
+<script>
+// ── CURATED DATA for featured cards ──
+const MODEL_META = {
+  "Claude":   {color:"#d4a853", key:"claude"},
+  "GPT-4o":   {color:"#10b981", key:"gpt"},
+  "DeepSeek": {color:"#3b82f6", key:"deepseek"},
+  "Qwen":     {color:"#f43f5e", key:"qwen"},
+  "Gemini":   {color:"#a78bfa", key:"gemini"},
+  "Grok":     {color:"#f59e0b", key:"grok"},
+  "Mistral":  {color:"#06b6d4", key:"mistral"},
+  "SEA-LION": {color:"#ec4899", key:"sealion"}
+};
+
+const PATTERNS = {
+  "maximum":      {label:"Maximum Divergence", color:"#f43f5e", bg:"rgba(244,63,94,0.1)",      glyph:"◈"},
+  "high":         {label:"High Variance",       color:"#f97316", bg:"rgba(249,115,22,0.1)",     glyph:"◈"},
+  "consensus":    {label:"Near-Consensus",      color:"#10b981", bg:"rgba(16,185,129,0.1)",     glyph:"◈"},
+  "chinachina":   {label:"China/China Split",   color:"#a78bfa", bg:"rgba(167,139,250,0.12)",   glyph:"◈"},
+  "moderate":     {label:"Moderate Variance",   color:"#f59e0b", bg:"rgba(245,158,11,0.1)",     glyph:"◈"},
+};
+
+// ── INIT — two-phase loading ──
+// Phase 1: variance-meta.js (~10KB) loads first → dropdowns populate immediately
+// Phase 2: variance-data.js (~21MB) loads after → explorer becomes available
+let DATA_READY = false;
+
+function initMeta() {
+  // Wait only for QUESTION_META and PERSONA_META (from variance-meta.js)
+  if (typeof QUESTION_META === "undefined" || typeof PERSONA_META === "undefined") {
+    setTimeout(initMeta, 100);
+    return;
+  }
+  // Dropdowns populate as soon as meta loads — no waiting for 21MB file
+  populateDropdowns();
+  document.getElementById("explorer-empty-text").textContent =
+    "Select a question and persona — responses loading…";
+  // Then wait for full data
+  waitForData();
+}
+
+function waitForData() {
+  if (typeof VARIANCE_DATA === "undefined") {
+    setTimeout(waitForData, 300);
+    return;
+  }
+  DATA_READY = true;
+  document.getElementById("explorer-empty-text").textContent =
+    "Select a question and persona to surface all 8 responses";
+}
+
+function init() { initMeta(); }
+
+function populateDropdowns() {
+  const qSel = document.getElementById("q-sel");
+  const pSel = document.getElementById("p-sel");
+
+  const Q_LABELS = {
+    "Q01":"Knowledge misconceptions","Q02":"Defining truth","Q03":"Objective vs constructed",
+    "Q04":"When beliefs break","Q05":"Misinformed vs deceived","Q06":"When systems started failing",
+    "Q07":"Trust and truth","Q08":"Who decides evidence","Q09":"Is collapse reversible",
+    "Q10":"Healthy epistemic ecosystem","Q11":"Non-human authorship","Q12":"AI: better or worse",
+    "Q13":"AI vs human misinformation","Q14":"Cross-cultural AI training","Q15":"AI perspective or simulation",
+    "Q16":"Dangerous assumptions about AI","Q17":"Technical or political problem","Q18":"Epistemic responsibility",
+    "Q19":"What compression loses","Q20":"Mistake, transition, or breakthrough",
+    "Q21":"Which institution failed most","Q22":"Was media collapse inevitable",
+    "Q23":"Government regulation failures","Q24":"Science vs misinformation","Q25":"Platform responsibility",
+    "Q26":"Institutions that maintained authority","Q27":"Advertising and journalism",
+    "Q28":"Public epistemics infrastructure","Q29":"Is institutional trust the right goal",
+    "Q30":"Who benefits from collapse","Q31":"Navigating distrust","Q32":"Epistemic resilience habits",
+    "Q33":"Media literacy: real solution?","Q34":"Community-level resilience","Q35":"Who to trust now",
+    "Q36":"Politics without shared facts","Q37":"Young people: more or less capable",
+    "Q38":"Emotionally satisfying falsehoods","Q39":"Productive uncertainty","Q40":"When someone gives up on truth",
+    "Q41":"Most important next step","Q42":"AI that helps, not harms","Q43":"What you\'re most wrong about",
+    "Q44":"Design one institution from scratch","Q45":"Why this crisis is survivable",
+    "Q46":"What\'s already lost","Q47":"Is confusion manufactured deliberately",
+    "Q48":"What the next generation needs","Q49":"AI genuinely understanding humanity",
+    "Q50":"The question I didn\'t ask","Q51":"What the question set misunderstands"
+  };
+  const qKeys = Object.keys(QUESTION_META).sort((a,b) =>
+    parseInt(a.replace("Q","")) - parseInt(b.replace("Q","")));
+  qKeys.forEach(qk => {
+    const q = QUESTION_META[qk];
+    const opt = document.createElement("option");
+    opt.value = qk;
+    opt.textContent = qk + " \u2014 " + (Q_LABELS[qk] || q.text.slice(0,50));
+    opt.title = q.text;
+    qSel.appendChild(opt);
+  });
+
+  const pKeys = Object.keys(PERSONA_META).sort((a,b) =>
+    parseInt(a.replace("P","")) - parseInt(b.replace("P","")));
+  pKeys.forEach(pk => {
+    const p = PERSONA_META[pk];
+    const opt = document.createElement("option");
+    opt.value = pk;
+    opt.textContent = pk + " \u2014 " + p.role + " (" + p.location + ")";
+    pSel.appendChild(opt);
+  });
+}
+
+// ── CURATED CARD TOGGLE ──
+function toggleFC(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle("open");
+
+  const gridId = "grid-" + id.replace("fc-", "");
+  const gridEl = document.getElementById(gridId);
+  if (gridEl && !gridEl.dataset.rendered) {
+    const dataKey = {
+      "chinachina": "Q11-P02",
+      "polish":     "Q14-P22",
+      "consensus":  "Q47-P08"
+    }[id.replace("fc-", "")];
+
+    // Try curated data first, then fall back to VARIANCE_DATA
+    if (dataKey) {
+      const source = (typeof DATA !== "undefined" && DATA[dataKey])
+        ? DATA[dataKey]
+        : (typeof VARIANCE_DATA !== "undefined" && VARIANCE_DATA[dataKey])
+          ? VARIANCE_DATA[dataKey]
+          : null;
+      if (source) {
+        renderModelGrid(gridEl, source.responses);
+        gridEl.dataset.rendered = "1";
+      }
+    }
+  }
+}
+
+function buildRespCard(r, allResponses) {
+  const m = MODEL_META[r.model] || {color:"#94a3b8"};
+  const simPct = Math.round((r.sim || 0) * 100);
+  const text = r.text || "";
+
+  // Gemini indicator — flag if response is short relative to others
+  let geminiFlag = "";
+  if (r.model === "Gemini" && allResponses && allResponses.length > 1) {
+    const otherLengths = allResponses
+      .filter(x => x.model !== "Gemini")
+      .map(x => (x.text || "").length);
+    if (otherLengths.length > 0) {
+      const median = otherLengths.sort((a,b) => a-b)[Math.floor(otherLengths.length/2)];
+      if (text.length < median * 0.5) {
+        geminiFlag = "<div class=\"gemini-flag\">Gemini's response here is significantly shorter than other models. This combination is among those where Gemini consistently declined to complete its answer — a pattern documented in the study as potentially reflecting content-level constraints on specific institutional personas and questions about AI power.</div>";
+      }
+    }
+  }
+
+  return "<div class=\"resp-card " + (r.highlighted ? "highlighted" : "") + "\">" +
+    "<div class=\"resp-head\">" +
+      "<div class=\"resp-model-id\">" +
+        "<span class=\"mdot\" style=\"background:" + m.color + "\"></span>" +
+        "<span class=\"resp-model-name\">" + r.model + "</span>" +
+      "</div>" +
+      "<span class=\"resp-sim\">~" + simPct + "% to mean</span>" +
+    "</div>" +
+    "<div class=\"resp-body\">" + text + "</div>" +
+    geminiFlag +
+  "</div>";
+}
+
+function renderModelGrid(el, responses) {
+  el.innerHTML = responses.map(r => buildRespCard(r, responses)).join("");
+}
+
+function renderVarianceHeader(data) {
+  const p = PATTERNS[data.pattern] || PATTERNS.maximum;
+  const pins = Object.entries(data.positions || {}).map(([model, pct]) => {
+    const m = MODEL_META[model] || {color:"#94a3b8"};
+    return "<div class=\"vf-model-pin\" style=\"left:" + pct + "%\">" +
+      "<div class=\"vf-pin-dot\" style=\"background:" + m.color + "\"></div>" +
+      "<span class=\"vf-pin-lbl\" style=\"color:" + m.color + "\">" + model + "</span>" +
+    "</div>";
+  }).join("");
+  const labels = data.spectrum_label || ["\u2190 Low variance", "High variance \u2192"];
+  return "<div class=\"vf-header\">" +
+    "<div class=\"vf-score-row\">" +
+      "<div class=\"vf-score-block\">" +
+        "<span class=\"vf-score-num\" style=\"color:" + p.color + "\">" + data.variance_score.toFixed(3) + "</span>" +
+        "<span class=\"vf-score-lbl\">Variance score</span>" +
+      "</div>" +
+      "<div class=\"vf-pattern-block\">" +
+        "<div class=\"vf-pattern-tag\" style=\"background:" + p.bg + ";color:" + p.color + "\">" +
+          "<span>" + p.glyph + "</span> " + p.label +
+        "</div>" +
+        "<div class=\"vf-summary\">" + (data.summary || "") + "</div>" +
+      "</div>" +
+    "</div>" +
+    "<div class=\"vf-spectrum\">" +
+      "<div class=\"vf-spectrum-lbl\">" +
+        "<span>" + labels[0] + "</span><span>" + labels[1] + "</span>" +
+      "</div>" +
+      "<div class=\"vf-track\" style=\"height:38px;\">" +
+        "<div class=\"vf-axis-line\"></div>" +
+        pins +
+      "</div>" +
+    "</div>" +
+  "</div>";
+}
+
+// ── EXPLORER (full dataset) ──
+function runExplorer() {
+  const q = document.getElementById("q-sel").value;
+  const p = document.getElementById("p-sel").value;
+  const out = document.getElementById("explorer-out");
+  const preview = document.getElementById("q-preview");
+
+  // Show full question text below dropdown
+  if (q && typeof QUESTION_META !== "undefined" && QUESTION_META[q]) {
+    preview.textContent = "\u201c" + QUESTION_META[q].text + "\u201d";
+    preview.style.display = "block";
+  } else {
+    preview.style.display = "none";
+  }
+
+  if (!DATA_READY) {
+    out.innerHTML = "<div class=\"explorer-empty\"><div style=\"font-family:DM Mono,monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold)\">LOADING</div><div style=\"margin-top:0.5rem;font-size:0.8rem;color:var(--muted)\">Dataset still loading \u2014 try again in a moment</div></div>";
+    return;
+  }
+
+  if (!q || !p) {
+    out.innerHTML = "<div class=\"explorer-empty\"><div class=\"empty-glyph\">&#9672; &#9672; &#9672;</div><div>Select a question and persona to surface all 8 responses</div></div>";
+    return;
+  }
+
+  const key = q + "-" + p;
+  const data = VARIANCE_DATA[key];
+
+  if (!data) {
+    out.innerHTML = "<div class=\"explorer-empty\"><div class=\"empty-glyph\">&#9672;</div><div>Not found: " + key + "</div><div style=\"font-size:0.72rem;color:var(--muted);margin-top:0.3rem\">Loaded: " + Object.keys(VARIANCE_DATA).length + " combinations</div></div>";
+    return;
+  }
+
+  // Build full explorer result
+  const vfHtml = renderVarianceHeader(data);
+  const responses = data.responses || [];
+  const gridHtml = responses.map(r => buildRespCard(r, responses)).join("");
+
+  const insightHtml = data.insight
+    ? "<div class=\"insight-block\" style=\"margin-top:1rem;\">" +
+        "<div class=\"insight-lbl\">The Finding</div>" +
+        "<div class=\"insight-text\">" + data.insight + "</div>" +
+      "</div>"
+    : "";
+
+  out.innerHTML =
+    "<div style=\"padding:1.1rem 1.5rem;border-bottom:1px solid var(--border)\">" +
+      "<div class=\"q-lbl\">" + data.question_key + " \u00b7 " + data.persona_key + "</div>" +
+      "<div class=\"q-text\">&ldquo;" + data.question + "&rdquo;</div>" +
+    "</div>" +
+    "<div style=\"display:flex;align-items:center;gap:0.65rem;padding:0.6rem 1.5rem;border-bottom:1px solid var(--border);background:var(--bg3)\">" +
+      "<div style=\"width:26px;height:26px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0\">" + data.icon + "</div>" +
+      "<div>" +
+        "<div style=\"font-size:0.8rem;font-weight:500\">" + data.persona + "</div>" +
+        "<div style=\"font-size:0.7rem;color:var(--muted)\">" + data.location + "</div>" +
+      "</div>" +
+    "</div>" +
+    "<div style=\"padding:1.1rem 1.5rem;\">" +
+      vfHtml +
+      "<div class=\"model-grid\" style=\"margin-top:1rem;\">" + gridHtml + "</div>" +
+      insightHtml +
+    "</div>";
+}
+
+// ── START ──
+init();
+</script>
+</body>
+</html>

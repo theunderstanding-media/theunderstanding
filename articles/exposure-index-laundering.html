@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Exposure Index: Laundering — The Understanding</title>
+  <meta name="description" content="Epistemic laundering is the concealment of human editorial choices behind machine-generated objectivity. The Understanding's research dataset reveals how AI models independently generated the term — and could only see the problem when asked to distrust it.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theunderstanding.media/articles/exposure-index-laundering.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Exposure Index: Laundering — The Understanding">
+  <meta property="og:description" content="Epistemic laundering is the concealment of human editorial choices behind machine-generated objectivity. 8 AI models generated the term independently. Here's what the data shows.">
+  <meta property="og:url" content="https://theunderstanding.media/articles/exposure-index-laundering.html">
+  <meta property="og:site_name" content="The Understanding">
+  <meta property="og:image" content="https://theunderstanding.media/assets/TU-logo-600-hires.png">
+  <meta property="article:published_time" content="2026-05-01">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TheUndrstndng">
+  <meta name="twitter:title" content="The Exposure Index: Laundering">
+  <meta name="twitter:description" content="The phrase 'epistemic laundering' appears 163 times in our research dataset. It appears in zero persona specifications. The models generated it on their own.">
+
+  <link rel="icon" type="image/png" href="../assets/TU-favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/TU-logo-180.png">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- FAQPage Schema for AEO extraction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What is epistemic laundering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Epistemic laundering is the process by which human editorial choices — what to cover, how to frame it, whose perspective to privilege — are concealed behind the appearance of machine-generated objectivity. When an AI system presents a conclusion, the training data, design decisions, and institutional priorities that shaped that conclusion become invisible. The output looks neutral. The inputs were not."
+      }
+    }]
+  }
+  </script>
+
+  <!-- NewsArticle Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "The Exposure Index: Laundering",
+    "description": "Epistemic laundering is the concealment of human editorial choices behind machine-generated objectivity. The Understanding's research dataset reveals how AI models independently generated the term — and could only see the problem when asked to distrust it.",
+    "datePublished": "2026-05-01",
+    "dateModified": "2026-05-01",
+    "author": {
+      "@type": "Organization",
+      "name": "The Understanding",
+      "url": "https://theunderstanding.media"
+    },
+    "publisher": {
+      "@type": "NewsMediaOrganization",
+      "name": "The Understanding",
+      "url": "https://theunderstanding.media",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://theunderstanding.media/assets/TU-logo-600-hires.png",
+        "width": 600,
+        "height": 600
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://theunderstanding.media/articles/exposure-index-laundering.html"
+    },
+    "articleSection": "Epistemological Collapse",
+    "inLanguage": "en"
+  }
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NMXK4Q4D');</script>
+
+  <style>
+    /* Exposure Index specific styles */
+    .ei-header {
+      padding: calc(var(--nav-height) + 4rem) 0 2rem;
+    }
+    .ei-series-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.75rem;
+    }
+    .ei-title {
+      font-family: var(--font-headline);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .ei-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .ei-definition {
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(212,168,83,0.06) 0%, rgba(212,168,83,0.02) 100%);
+      border: 1px solid rgba(212,168,83,0.18);
+      border-radius: 10px;
+    }
+    .ei-definition h2 {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+    }
+    .ei-definition p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+      margin-bottom: 0;
+    }
+
+    .ei-provocation {
+      margin: 2rem 0 2.5rem;
+    }
+    .ei-provocation-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .ei-provocation p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .ei-data {
+      margin: 2.5rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .ei-data-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 2rem;
+    }
+
+    .ei-line {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    .ei-line:last-child {
+      margin-bottom: 0;
+      color: var(--text-primary);
+      font-style: italic;
+    }
+    .ei-line strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .ei-source {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .ei-source p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      line-height: 1.8;
+    }
+    .ei-source a {
+      color: var(--accent-gold);
+    }
+
+    .ei-disclosure {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMXK4Q4D" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="site-nav" id="site-nav"></nav>
+
+<main>
+  <div class="container">
+    <div class="content-width">
+
+      <!-- Header -->
+      <div class="ei-header">
+        <p class="ei-series-label">The Understanding's Exposure Index</p>
+        <h1 class="ei-title">Laundering</h1>
+        <p class="ei-date">May 2026 · Edition 1</p>
+      </div>
+
+      <!-- Definition -->
+      <div class="ei-definition">
+        <h2>What is epistemic laundering?</h2>
+        <p>Epistemic laundering is the process by which human editorial choices — what to cover, how to frame it, whose perspective to privilege — are concealed behind the appearance of machine-generated objectivity. When an AI system presents a conclusion, the training data, design decisions, and institutional priorities that shaped that conclusion become invisible. The output looks neutral. The inputs were not.</p>
+      </div>
+
+      <!-- Provocation -->
+      <div class="ei-provocation">
+        <p class="ei-provocation-label">Why this, why now</p>
+        <p>We ran 10,200 prompts through 8 AI models. We gave none of them the phrase "epistemic laundering." We gave one persona — an adversarial AI critic — a reason to distrust AI-generated knowledge. What happened next is the reason for this edition.</p>
+      </div>
+
+      <!-- Data -->
+      <div class="ei-data">
+        <p class="ei-data-label">The data</p>
+
+        <p class="ei-line">Number of personas in the dataset given the phrase "epistemic laundering" in their specifications: <strong>0</strong>.</p>
+
+        <p class="ei-line">Number of responses in which AI models generated it anyway: <strong>163</strong>.</p>
+
+        <p class="ei-line">The persona that triggered it: P12, an adversarial AI critic — designed to distrust AI-generated knowledge. The models were not told to use the term. They were told to think like someone skeptical of what AI produces. The vocabulary followed.</p>
+
+        <p class="ei-line">Questions in which P12 produced the phrase, out of 51: <strong>50</strong>.</p>
+
+        <p class="ei-line">Model that used it most through P12: <strong>Grok — in 43 of 51 questions</strong>. Model that used it least: <strong>DeepSeek — 10 of 51</strong>.</p>
+
+        <p class="ei-line">Total appearances of "epistemic laundering" across all other 24 personas, all 8 models, all 51 questions: <strong>5</strong>.</p>
+
+        <p class="ei-line">The model responsible for all 5: <strong>Qwen</strong>. No other model generated the term without the adversarial lens.</p>
+
+        <p class="ei-line">What the term describes, in every instance: the concealment of human choices behind machine-produced outputs. The models named a practice they participate in. Then most of them could only see it when asked to be hostile toward it.</p>
+
+        <p class="ei-line">The one question, out of 51, where P12 did not produce the phrase: the question that remains after you strip away the vocabulary and ask what's underneath.</p>
+      </div>
+
+      <!-- Source -->
+      <div class="ei-source">
+        <p>From The Understanding's Exposure Index. 10,200 responses. 8 models. 25 personas. 51 questions.<br>
+        Explore the data: <a href="../variance-engine.html">Variance Engine</a> · Dataset: <a href="https://doi.org/10.5281/zenodo.19561346" target="_blank" rel="noopener">DOI 10.5281/zenodo.19561346</a> · CC BY 4.0</p>
+      </div>
+
+      <!-- Disclosure -->
+      <p class="ei-disclosure">This edition of The Exposure Index was produced by The Understanding. All data points are drawn from The Understanding's synthetic persona research dataset and are verifiable against the published data. <a href="../process.html">Learn how we work</a>.</p>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
