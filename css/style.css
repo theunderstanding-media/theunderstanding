@@ -543,6 +543,7 @@ p { margin-bottom: 1rem; }
 .article-card .color-bar.keeper { background: var(--keeper); }
 .article-card .color-bar.architect { background: var(--architect); }
 .article-card .color-bar.chronicler { background: var(--chronicler); }
+.article-card .color-bar.understanding { background: var(--accent-gold); }
 
 .article-card .article-meta {
   font-family: var(--font-mono);
@@ -560,6 +561,7 @@ p { margin-bottom: 1rem; }
 .article-card .article-meta .personality.keeper { color: var(--keeper); }
 .article-card .article-meta .personality.architect { color: var(--architect); }
 .article-card .article-meta .personality.chronicler { color: var(--chronicler); }
+.article-card .article-meta .personality.understanding { color: var(--accent-gold); }
 
 .article-card .article-meta .date {
   color: var(--text-muted);
@@ -1264,4 +1266,448 @@ li {
   .nav-back-label {
     font-size: 0.85rem;
   }
+}
+
+/* ============================================
+   v2 — Round 2 design additions (May 2026)
+   All additive. Existing rules untouched.
+   ============================================ */
+
+/* --- Voice color tokens for v2 elements --- */
+.voice-witness    { --voice: var(--witness); }
+.voice-keeper     { --voice: var(--keeper); }
+.voice-architect  { --voice: var(--architect); }
+.voice-chronicler { --voice: var(--chronicler); }
+.voice-understanding { --voice: var(--accent-gold); }
+
+/* --- Reading progress bar (1px, hairline, top of viewport) --- */
+.read-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 1px;
+  width: 0;
+  background: var(--accent-gold);
+  z-index: 1000;
+  transition: width 0.06s linear;
+  pointer-events: none;
+}
+
+/* --- Article header v2: voice rule + meta --- */
+.article-header-v2 {
+  padding: 0 0 2rem;
+}
+.article-header-v2 .voice-rule {
+  height: 2px;
+  width: 100%;
+  background: var(--voice, var(--accent-gold));
+  margin-bottom: 2rem;
+}
+.article-header-v2 .article-meta-v2 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.article-header-v2 .voice-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--voice, var(--accent-gold));
+  font-weight: 600;
+  text-decoration: none;
+}
+.article-header-v2 .voice-name::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--voice, var(--accent-gold));
+}
+.article-header-v2 .article-meta-v2 .date,
+.article-header-v2 .article-meta-v2 .read-time {
+  color: var(--text-muted);
+}
+.article-header-v2 .article-meta-v2 .pillar {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+.article-header-v2 .article-meta-v2 .sep {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* --- Article body v2: drop cap on first paragraph --- */
+.article-body-v2 > p:first-of-type::first-letter {
+  font-family: var(--font-headline);
+  font-size: 4.4em;
+  font-weight: 700;
+  line-height: 0.9;
+  float: left;
+  margin: 0.1em 0.12em 0 0;
+  color: var(--text-primary);
+}
+
+/* --- Pull quote --- */
+.pullquote {
+  margin: 2.5rem 0;
+  padding: 0.5rem 0 0.5rem 1.75rem;
+  border-left: 2px solid var(--voice, var(--accent-gold));
+  font-family: var(--font-headline);
+  font-style: italic;
+  font-size: 1.45rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+.pullquote .attribution {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+/* Extra breathing room when a pull quote is followed by a section header */
+.pullquote + h2,
+.pullquote + hr + h2 {
+  margin-top: 3.5rem;
+}
+
+/* --- Mid-article inline subscribe (editorial ask) --- */
+.inline-subscribe {
+  margin: 3rem auto;
+  padding: 1.75rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  max-width: 540px;
+}
+.inline-subscribe p {
+  font-family: var(--font-headline);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.inline-subscribe a {
+  color: var(--accent-gold);
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--accent-gold);
+  padding-bottom: 1px;
+}
+.inline-subscribe a:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+/* --- Article layout v2 with optional sticky TOC --- */
+/* The entire article (header + body) sits inside one grid so header
+   and body share the same narrow column, with TOC alongside from the top. */
+.article-layout-v2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 3rem) 2rem 0;
+  gap: 3rem;
+}
+@media (min-width: 1100px) {
+  .article-layout-v2.has-toc {
+    grid-template-columns: minmax(0, 680px) 220px;
+    gap: 4rem;
+  }
+  .article-layout-v2.has-toc > .article-main {
+    margin: 0;
+    max-width: 680px;
+    min-width: 0;
+  }
+}
+
+/* Header v2 inside the layout — no extra container needed */
+.article-layout-v2 .article-header-v2 {
+  padding: 0 0 2rem;
+}
+
+/* Body section inside layout — kill the redundant padding */
+.article-layout-v2 .article-main > .section {
+  padding: 1.5rem 0 0;
+}
+
+/* --- Sticky right-rail TOC (quieter) --- */
+.article-toc {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .article-layout-v2.has-toc .article-toc {
+    display: block;
+    position: sticky;
+    top: calc(var(--nav-height) + 3rem);
+    align-self: start;
+    padding: 0;
+    max-height: calc(100vh - var(--nav-height) - 4rem);
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .article-layout-v2.has-toc .article-toc.visible {
+    opacity: 1;
+  }
+}
+.article-toc .toc-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+.article-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-toc li {
+  margin-bottom: 0.85rem;
+  line-height: 1.4;
+}
+.article-toc a {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  opacity: 0.55;
+  text-decoration: none;
+  display: block;
+  padding-left: 0.6rem;
+  border-left: 1px solid transparent;
+  transition: color 0.2s, opacity 0.2s, border-color 0.2s;
+}
+.article-toc a:hover {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+.article-toc a.active {
+  color: var(--text-primary);
+  opacity: 1;
+  border-left-color: var(--voice, var(--accent-gold));
+}
+
+/* --- Hero v2: italic manifesto + attribution --- */
+.hero-tagline-v2 {
+  font-family: var(--font-headline);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  max-width: 680px;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+.hero-attribution {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+/* --- Lead article in feed --- */
+.article-card.is-lead {
+  display: block;
+  padding: 2rem;
+  position: relative;
+  border-top: 2px solid var(--voice, var(--accent-gold));
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+.article-card.is-lead .lead-flag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--voice, var(--accent-gold));
+  margin-bottom: 1.25rem;
+  display: block;
+}
+.article-card.is-lead .lead-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .article-card.is-lead .lead-grid {
+    grid-template-columns: 1fr 200px;
+    gap: 2rem;
+  }
+}
+.article-card.is-lead .lead-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+.article-card.is-lead .lead-meta .personality {
+  color: var(--voice, var(--accent-gold));
+  font-weight: 600;
+}
+.article-card.is-lead .lead-meta .date,
+.article-card.is-lead .lead-meta .read-time {
+  color: var(--text-muted);
+}
+.article-card.is-lead h3 {
+  font-family: var(--font-headline);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.article-card.is-lead .article-excerpt {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.article-card.is-lead .lead-stat {
+  background: rgba(212,168,83,0.04);
+  border: 1px solid rgba(212,168,83,0.15);
+  border-radius: 6px;
+  padding: 1.25rem;
+  text-align: left;
+  align-self: start;
+}
+.article-card.is-lead .lead-stat .stat-num {
+  display: block;
+  font-family: var(--font-headline);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--voice, var(--accent-gold));
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.article-card.is-lead .lead-stat .stat-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* --- Read time on standard cards --- */
+.article-card .article-meta .read-time {
+  color: var(--text-muted);
+  margin-left: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+.article-card .article-meta .read-time::before {
+  content: '·';
+  margin-right: 0.5rem;
+  opacity: 0.5;
+}
+
+/* ============================================
+   v2 — Homepage section headings (May 2026)
+   Pattern: [Section Name]: [What's there now]
+   Section name in display weight, colon as
+   editorial pivot, frame text in quieter weight.
+   ============================================ */
+
+.section-heading {
+  font-family: var(--font-headline);
+  font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+  letter-spacing: -0.005em;
+}
+.section-heading .sh-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.section-heading .sh-colon {
+  color: var(--text-primary);
+  font-weight: 400;
+  margin-right: 0.15em;
+}
+.section-heading .sh-frame {
+  font-weight: 400;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+/* Edition title under the Exposure Index heading */
+.ei-edition-title {
+  font-family: var(--font-headline);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem 0;
+}
+.ei-edition-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.ei-edition-title a:hover {
+  color: var(--accent-gold);
+}
+
+/* Date line for the Exposure Index edition */
+.ei-edition-line {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+.ei-edition-line .sep {
+  opacity: 0.5;
+  margin: 0 0.6rem;
+}
+
+/* Exposure Index page: section heading variant (sits above H1 article title) */
+.section-heading-page {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  margin: 0 0 0.85rem 0;
+  display: block;
+}
+.ei-header {
+  margin-bottom: 2.5rem;
+}
+.ei-header .ei-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2.5rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin: 0.5rem 0 0 0;
 }
