@@ -250,3 +250,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// --- v2: Reading progress bar + sticky TOC ---
+(function(){
+  document.addEventListener('DOMContentLoaded', function(){
+    var article = document.querySelector('article.article-page[data-toc]');
+    if (!article) return;
+
+    // Reading progress bar
+    var bar = document.getElementById('read-progress');
+    if (bar) {
+      var update = function(){
+        var rect = article.getBoundingClientRect();
+        var total = article.offsetHeight - window.innerHeight;
+        var scrolled = -rect.top;
+        var pct = Math.max(0, Math.min(1, scrolled / total));
+        bar.style.width = (pct * 100) + '%';
+      };
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
+
+    // Build TOC from H2s in article body
+    var toc = document.getElementById('article-toc');
+    if (toc) {
+      var body = article.querySelector('.article-body-v2');
+      if (!body) return;
+      var headings = body.querySelectorAll('h2');
+      if (headings.length < 2) {
+        toc.style.display = 'none';
+        var layout = article.querySelector('.article-layout-v2');
+        if (layout) layout.classList.remove('has-toc');
+        return;
+      }
+      var ul = toc.querySelector('ul');
+      var slugify = function(s){
+        return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
+      };
+      var entries = [];
+      headings.forEach(function(h, i){
+        if (!h.id) h.id = 'h-' + slugify(h.textContent) + '-' + i;
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        a.dataset.target = h.id;
+        li.appendChild(a);
+        ul.appendChild(li);
+        entries.push({ heading: h, link: a });
+      });
+
+      // TOC sits alongside the article from the top — show it immediately
+      toc.classList.add('visible');
+
+      // Active section tracking
+      var setActive = function(id){
+        entries.forEach(function(e){
+          if (e.link.dataset.target === id) e.link.classList.add('active');
+          else e.link.classList.remove('active');
+        });
+      };
+      var sectionObserver = new IntersectionObserver(function(items){
+        items.forEach(function(item){
+          if (item.isIntersecting) setActive(item.target.id);
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      headings.forEach(function(h){ sectionObserver.observe(h); });
+    }
+  });
+})();
