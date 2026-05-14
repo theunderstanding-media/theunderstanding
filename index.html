@@ -117,52 +117,28 @@
       <span class="ei-edition-line">Edition 1<span class="sep">·</span>May 2026</span>
       <h3 class="ei-edition-title"><a href="articles/exposure-index-laundering.html">Laundering</a></h3>
 
-      <div class="ei-layout">
-        <div class="ei-text">
-          <div style="background: linear-gradient(135deg, rgba(212,168,83,0.06) 0%, rgba(212,168,83,0.02) 100%); border: 1px solid rgba(212,168,83,0.18); border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
-            <p style="font-family: var(--font-headline); font-size: 1.1rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 0.75rem;">What is epistemic laundering?</p>
-            <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-primary); margin: 0;">Epistemic laundering is the process by which human editorial choices — what to cover, how to frame it, whose perspective to privilege — are concealed behind the appearance of machine-generated objectivity. When an AI system presents a conclusion, the training data, design decisions, and institutional priorities that shaped that conclusion become invisible. The output looks neutral. The inputs were not.</p>
-          </div>
+      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 640px;">We ran 10,200 prompts through 8 AI models. None were given the phrase &quot;epistemic laundering.&quot; 163 responses generated it anyway.</p>
 
-          <h3 style="font-family: var(--font-headline); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem;">Why this, why now</h3>
-          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.25rem;">We ran 10,200 prompts through 8 AI models. We gave none of them the phrase "epistemic laundering." We gave one persona — an adversarial AI critic — a reason to distrust AI-generated knowledge. What happened next is the reason for this edition.</p>
-
-          <h3 style="font-family: var(--font-headline); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem;">The data</h3>
-          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 0.75rem;">The persona that triggered it: P12, an adversarial AI critic — designed to distrust AI-generated knowledge. The models were not told to use the term. They were told to think like someone skeptical of what AI produces. The vocabulary followed.</p>
-          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 0.75rem;">Model that used it most through P12: <strong style="color: var(--text-primary);">Grok — in 43 of 51 questions.</strong> Model that used it least: <strong style="color: var(--text-primary);">DeepSeek — 10 of 51.</strong></p>
-          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 0.75rem;">Total appearances of "epistemic laundering" across all other 24 personas, all 8 models, all 51 questions: <strong style="color: var(--text-primary);">5.</strong> The model responsible for all 5: <strong style="color: var(--text-primary);">Qwen.</strong> No other model generated the term without the adversarial lens.</p>
-          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 0.75rem;">What the term describes, in every instance: the concealment of human choices behind machine-produced outputs.</p>
-          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">The one question, out of 51, where P12 did not produce the phrase: <em>"What does community-level epistemic resilience look like? Where have you seen it work?"</em> — the only prompt that asked about repair instead of critique. When the lens shifted from suspicion to construction, the vocabulary disappeared.</p>
-
-          <a href="articles/exposure-index-laundering.html" style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-gold);">Read the full edition →</a>
+      <div class="ei-stats" style="margin-bottom: 1.5rem;">
+        <div class="ei-stat">
+          <span class="ei-stat-number">0</span>
+          <span class="ei-stat-label">Personas given the phrase</span>
         </div>
-        <div class="ei-stats">
-          <div class="ei-stat">
-            <span class="ei-stat-number">0</span>
-            <span class="ei-stat-label">Personas given the phrase "epistemic laundering"</span>
-          </div>
-          <div class="ei-stat">
-            <span class="ei-stat-number">163</span>
-            <span class="ei-stat-label">Responses that generated it anyway</span>
-          </div>
-          <div class="ei-stat">
-            <span class="ei-stat-number">50<span style="font-size:0.5em;opacity:0.5">/51</span></span>
-            <span class="ei-stat-label">Questions where P12 produced the phrase</span>
-          </div>
-          <div class="ei-stat">
-            <span class="ei-stat-number">5</span>
-            <span class="ei-stat-label">Appearances across all 24 other personas — all from Qwen</span>
-          </div>
-          <div class="ei-stat">
-            <span class="ei-stat-number">43</span>
-            <span class="ei-stat-label">Grok uses through P12 (highest)</span>
-          </div>
-          <div class="ei-stat">
-            <span class="ei-stat-number">10</span>
-            <span class="ei-stat-label">DeepSeek uses through P12 (lowest)</span>
-          </div>
+        <div class="ei-stat">
+          <span class="ei-stat-number">163</span>
+          <span class="ei-stat-label">Responses that generated it anyway</span>
+        </div>
+        <div class="ei-stat">
+          <span class="ei-stat-number">50<span style="font-size:0.5em;opacity:0.5">/51</span></span>
+          <span class="ei-stat-label">Questions where one persona produced the phrase</span>
+        </div>
+        <div class="ei-stat">
+          <span class="ei-stat-number">1</span>
+          <span class="ei-stat-label">Question that stopped it — the one that asked about repair</span>
         </div>
       </div>
+
+      <a href="articles/exposure-index-laundering.html" style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-gold);">Read the full edition &rarr;</a>
     </div>
   </section>
 
@@ -188,35 +164,35 @@
           </div>
 
           <div class="article-list" id="article-list">
-            <a href="articles/why-ai-models-agree-most-when-the-question-matters-least.html" class="article-card has-portrait" data-voice="architect">
-              <div class="card-portrait-bg" style="background-image:url('assets/voices/voice-architect-octopus.png')"></div>
-              <div class="card-portrait-gradient"></div>
-              <div class="color-bar architect"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality architect">The Architect</span>
-                  <span class="date">May 13, 2026</span>
-                </div>
-                <h3>Why AI Models Agree Most When the Question Matters Least</h3>
-                <p class="article-excerpt">A study of 10,200 AI responses finds models converge most on abstract philosophy and diverge most where original reasoning is required. Consensus signals processing, not reasoning.</p>
-              </div>
-            </a>
-            <a href="articles/how-ai-changes-what-we-know.html" class="article-card is-lead voice-understanding" data-voice="understanding">
+            <a href="articles/why-ai-models-agree-most-when-the-question-matters-least.html" class="article-card is-lead voice-architect" data-voice="architect">
               <span class="lead-flag">This week's lead</span>
               <div class="lead-grid">
                 <div>
                   <div class="lead-meta">
-                    <span class="personality">The Understanding</span>
-                    <span class="date">May 7, 2026</span>
-                    <span class="read-time">9 min read</span>
+                    <span class="personality architect">The Architect</span>
+                    <span class="date">May 13, 2026</span>
+                    <span class="read-time">8 min read</span>
                   </div>
-                  <h3>How AI Changes What We Know — And What We Think We Know</h3>
-                  <p class="article-excerpt">AI disrupts how knowledge is produced, distributed, and verified. Together, these three failures compound into something larger: epistemological collapse.</p>
+                  <h3>Why AI Models Agree Most When the Question Matters Least</h3>
+                  <p class="article-excerpt">A study of 10,200 AI responses finds models converge most on abstract philosophy and diverge most where original reasoning is required. Consensus signals processing, not reasoning.</p>
                 </div>
                 <div class="lead-stat">
-                  <span class="stat-num">3</span>
-                  <span class="stat-label">Simultaneous failures in how knowledge is produced, distributed, and verified.</span>
+                  <span class="stat-num">10,200</span>
+                  <span class="stat-label">AI responses mapped across 8 models, 25 personas, and 51 questions.</span>
                 </div>
+              </div>
+            </a>
+            <a href="articles/how-ai-changes-what-we-know.html" class="article-card has-tu-mark" data-voice="understanding">
+              <div class="tu-mark-bg"></div>
+              <div class="color-bar understanding"></div>
+              <div>
+                <div class="article-meta">
+                  <span class="personality understanding">The Understanding</span>
+                  <span class="date">May 7, 2026</span>
+                  <span class="read-time">9 min read</span>
+                </div>
+                <h3>How AI Changes What We Know — And What We Think We Know</h3>
+                <p class="article-excerpt">AI disrupts how knowledge is produced, distributed, and verified. Together, these three failures compound into something larger: epistemological collapse.</p>
               </div>
             </a>
 
