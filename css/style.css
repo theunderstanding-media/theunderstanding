@@ -1138,8 +1138,13 @@ li {
 
 .ei-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
+}
+@media (max-width: 700px) {
+  .ei-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .ei-stat {
@@ -2255,4 +2260,160 @@ li {
   border: 1.5px solid var(--accent-gold);
   object-fit: cover;
   flex-shrink: 0;
+}
+
+
+/* ============================================
+   HOMEPAGE RESTRUCTURE — May 2026
+   EI product card + archive list
+   ============================================ */
+
+.ei-product-card {
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  border-radius: 12px;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(212, 168, 83, 0.04) 0%, rgba(212, 168, 83, 0.01) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.ei-product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold), transparent);
+}
+.ei-product-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.ei-product-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+.ei-product-series {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.ei-product-series .sep {
+  opacity: 0.5;
+  margin: 0 0.5rem;
+}
+.ei-product-card .ei-edition-title {
+  margin-bottom: 1rem;
+}
+.ei-product-teaser {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+}
+.ei-product-card .ei-stats {
+  margin-bottom: 1.5rem;
+}
+.ei-product-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(212, 168, 83, 0.3);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.ei-product-cta:hover {
+  background: rgba(212, 168, 83, 0.08);
+  border-color: rgba(212, 168, 83, 0.5);
+  color: var(--text-primary);
+}
+@media (max-width: 600px) {
+  .ei-product-card { padding: 1.5rem; }
+  .ei-product-header { flex-direction: column; gap: 0.35rem; }
+}
+
+.archive-section {
+  margin-top: 3rem;
+}
+.archive-list {
+  display: flex;
+  flex-direction: column;
+}
+.archive-item {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.archive-item:hover {
+  background: rgba(241, 245, 249, 0.02);
+}
+.archive-item:first-child {
+  border-top: 1px solid var(--border-subtle);
+}
+.archive-item .personality {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.archive-item .personality.witness { color: var(--witness); }
+.archive-item .personality.keeper { color: var(--keeper); }
+.archive-item .personality.architect { color: var(--architect); }
+.archive-item .personality.chronicler { color: var(--chronicler); }
+.archive-item .personality.understanding { color: var(--accent-gold); }
+.archive-title {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  transition: color 0.15s ease;
+}
+.archive-item:hover .archive-title {
+  color: var(--accent-gold);
+}
+.archive-date {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.archive-view-all {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  padding: 1.25rem 0 0 0;
+  text-decoration: none;
+}
+.archive-view-all:hover {
+  color: var(--text-primary);
+}
+@media (max-width: 700px) {
+  .archive-item { grid-template-columns: 1fr; gap: 0.25rem; padding: 0.75rem 0; }
+  .archive-date { order: -1; }
 }

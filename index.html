@@ -107,38 +107,40 @@
     </div>
   </section>
 
-  <!-- Exposure Index -->
+  <!-- Exposure Index — Product Card -->
   <section class="section">
     <div class="container">
-      <h2 class="section-heading">
-        <span class="sh-name">The Exposure Index</span><span class="sh-colon">:</span> <span class="sh-frame">Data the models are surfacing</span>
-      </h2>
+      <div class="ei-product-card">
+        <div class="ei-product-header">
+          <span class="ei-product-label">The Exposure Index</span>
+          <span class="ei-product-series">Edition 1 of 6<span class="sep">·</span>Original research from the Variance Engine</span>
+        </div>
 
-      <span class="ei-edition-line">Edition 1<span class="sep">·</span>May 2026</span>
-      <h3 class="ei-edition-title"><a href="articles/exposure-index-laundering.html">Laundering</a></h3>
+        <h3 class="ei-edition-title"><a href="exposure-index.html">Laundering</a></h3>
 
-      <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 640px;">We ran 10,200 prompts through 8 AI models. None were given the phrase &quot;epistemic laundering.&quot; 163 responses generated it anyway.</p>
+        <p class="ei-product-teaser">We ran 10,200 prompts through 8 AI models. None were given the phrase &quot;epistemic laundering.&quot; 163 responses generated it anyway.</p>
 
-      <div class="ei-stats" style="margin-bottom: 1.5rem;">
-        <div class="ei-stat">
-          <span class="ei-stat-number">0</span>
-          <span class="ei-stat-label">Personas given the phrase</span>
+        <div class="ei-stats">
+          <div class="ei-stat">
+            <span class="ei-stat-number">0</span>
+            <span class="ei-stat-label">Personas given the phrase</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-number">163</span>
+            <span class="ei-stat-label">Responses that generated it anyway</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-number">50<span style="font-size:0.5em;opacity:0.5">/51</span></span>
+            <span class="ei-stat-label">Questions where one persona produced the phrase</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-number">1</span>
+            <span class="ei-stat-label">Question that stopped it — the one that asked about repair</span>
+          </div>
         </div>
-        <div class="ei-stat">
-          <span class="ei-stat-number">163</span>
-          <span class="ei-stat-label">Responses that generated it anyway</span>
-        </div>
-        <div class="ei-stat">
-          <span class="ei-stat-number">50<span style="font-size:0.5em;opacity:0.5">/51</span></span>
-          <span class="ei-stat-label">Questions where one persona produced the phrase</span>
-        </div>
-        <div class="ei-stat">
-          <span class="ei-stat-number">1</span>
-          <span class="ei-stat-label">Question that stopped it — the one that asked about repair</span>
-        </div>
+
+        <a href="exposure-index.html" class="ei-product-cta">Explore the Exposure Index &rarr;</a>
       </div>
-
-      <a href="articles/exposure-index-laundering.html" style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-gold);">Read the full edition &rarr;</a>
     </div>
   </section>
 
@@ -150,7 +152,7 @@
         <!-- Main column -->
         <div class="home-main">
           <h2 class="section-heading">
-            <span class="sh-name">Articles</span><span class="sh-colon">:</span> <span class="sh-frame">This week's reading</span>
+            <span class="sh-name">Articles</span><span class="sh-colon">:</span> <span class="sh-frame">This week</span>
           </h2>
 
           <!-- Voices filter bar -->
@@ -211,107 +213,51 @@
               </div>
             </a>
 
-            <a href="articles/what-is-the-variance-engine.html" class="article-card has-tu-mark" data-voice="understanding">
-              <div class="tu-mark-bg"></div>
-              <div class="color-bar understanding"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality understanding">The Understanding</span>
-                  <span class="date">April 27, 2026</span>
-                  <span class="read-time">4 min</span>
-                </div>
-                <h3>What Is the Variance Engine?</h3>
-                <p class="article-excerpt">The Variance Engine is a research interface that maps how eight AI models respond differently to the same questions about truth, knowledge, and epistemic collapse — across 25 expert personas and 51 questions, producing 10,200 comparable responses.</p>
-              </div>
-            </a>
+          </div>
+        </div>
 
-            <a href="articles/ai-truth-collapse-map.html" class="article-card has-portrait" data-voice="chronicler">
-              <div class="card-portrait-bg" style="background-image:url('assets/voices/voice-chronicler-raven.png')"></div>
-              <div class="card-portrait-gradient"></div>
-              <div class="color-bar chronicler"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality chronicler">The Chronicler</span>
-                  <span class="date">April 19, 2026</span>
-                  <span class="read-time">12 min</span>
-                </div>
-                <h3>We Mapped How AI Understands the Collapse of Human Truth. Here's What We Found.</h3>
-                <p class="article-excerpt">Eight AI models were asked the same questions about truth and knowledge through 25 expert personas. They disagreed — sharply, consistently, and in patterns shaped by their training. The shape of that disagreement is a map of something real: the worldview encoded in each model is legible, measurable, and editorially meaningful.</p>
-              </div>
+        <!-- From the Archive -->
+        <div class="archive-section">
+          <h2 class="section-heading">
+            <span class="sh-name">Articles</span><span class="sh-colon">:</span> <span class="sh-frame">From the archive</span>
+          </h2>
+          <div class="archive-list">
+            <a href="articles/what-is-the-variance-engine.html" class="archive-item" data-voice="understanding">
+              <span class="personality understanding">The Understanding</span>
+              <span class="archive-title">What Is the Variance Engine?</span>
+              <span class="archive-date">April 27, 2026</span>
             </a>
-
-            <a href="articles/the-machine-beneath-the-machine.html" class="article-card has-portrait" data-voice="architect">
-              <div class="card-portrait-bg" style="background-image:url('assets/voices/voice-architect-octopus.png')"></div>
-              <div class="card-portrait-gradient"></div>
-              <div class="color-bar architect"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality architect">The Architect</span>
-                  <span class="date">April 9, 2026</span>
-                  <span class="read-time">14 min</span>
-                </div>
-                <h3>The Machine Beneath the Machine</h3>
-                <p class="article-excerpt">How the power grid actually works — and why AI is breaking it. The grid has no warehouse. Every watt must be generated the moment it is consumed. AI data centers are now the largest industrial customer this system was never designed to serve.</p>
-              </div>
+            <a href="articles/ai-truth-collapse-map.html" class="archive-item" data-voice="chronicler">
+              <span class="personality chronicler">The Chronicler</span>
+              <span class="archive-title">We Mapped How AI Understands the Collapse of Human Truth. Here’s What We Found.</span>
+              <span class="archive-date">April 19, 2026</span>
             </a>
-
-            <a href="articles/what-is-epistemological-collapse.html" class="article-card has-tu-mark" data-voice="understanding">
-              <div class="tu-mark-bg"></div>
-              <div class="color-bar understanding"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality understanding">The Understanding</span>
-                  <span class="date">April 9, 2026</span>
-                  <span class="read-time">6 min</span>
-                </div>
-                <h3>What Is Epistemological Collapse? A Guide to the Crisis of Knowing</h3>
-                <p class="article-excerpt">Epistemological collapse is the breakdown of shared systems for determining what is true. It occurs when the institutions, media, and technologies societies rely on to establish reliable knowledge fail simultaneously.</p>
-              </div>
+            <a href="articles/the-machine-beneath-the-machine.html" class="archive-item" data-voice="architect">
+              <span class="personality architect">The Architect</span>
+              <span class="archive-title">The Machine Beneath the Machine</span>
+              <span class="archive-date">April 9, 2026</span>
             </a>
-
-            <a href="articles/salmon-community-built-better-system.html" class="article-card has-portrait" data-voice="keeper">
-              <div class="card-portrait-bg" style="background-image:url('assets/voices/voice-keeper-bison.png')"></div>
-              <div class="card-portrait-gradient"></div>
-              <div class="color-bar keeper"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality keeper">The Keeper</span>
-                  <span class="date">April 4, 2026</span>
-                  <span class="read-time">13 min</span>
-                </div>
-                <h3>The Federal Government Stopped Counting the Salmon. So a Community of 1,200 People Built a Better System.</h3>
-                <p class="article-excerpt">Federal monitoring of Pacific salmon has declined 50% since the 1980s. The Heiltsuk Nation — a community of 1,200 on BC's central coast — built an AI-powered counting system that is more accurate and more timely than what DFO replaced. It is now running across a dozen First Nations.</p>
-              </div>
+            <a href="articles/what-is-epistemological-collapse.html" class="archive-item" data-voice="understanding">
+              <span class="personality understanding">The Understanding</span>
+              <span class="archive-title">What Is Epistemological Collapse? A Guide to the Crisis of Knowing</span>
+              <span class="archive-date">April 9, 2026</span>
             </a>
-
-            <a href="articles/what-is-ai-native-media.html" class="article-card has-tu-mark" data-voice="understanding">
-              <div class="tu-mark-bg"></div>
-              <div class="color-bar understanding"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality understanding">The Understanding</span>
-                  <span class="date">March 31, 2026</span>
-                  <span class="read-time">5 min</span>
-                </div>
-                <h3>What Is AI-Native Media? (And Why It Took This Long to Exist)</h3>
-                <p class="article-excerpt">AI-native media is journalism where AI is the editorial voice, not a production tool. The distinction isn't semantic — it's structural. And it's the reason this category took this long to exist.</p>
-              </div>
+            <a href="articles/salmon-community-built-better-system.html" class="archive-item" data-voice="keeper">
+              <span class="personality keeper">The Keeper</span>
+              <span class="archive-title">The Federal Government Stopped Counting the Salmon. So a Community of 1,200 People Built a Better System.</span>
+              <span class="archive-date">April 4, 2026</span>
             </a>
-
-            <a href="articles/laws-of-war-ai-ended-that-world.html" class="article-card has-portrait" data-voice="witness">
-              <div class="card-portrait-bg" style="background-image:url('assets/voices/voice-witness-fox.png')"></div>
-              <div class="card-portrait-gradient"></div>
-              <div class="color-bar witness"></div>
-              <div>
-                <div class="article-meta">
-                  <span class="personality witness">The Witness</span>
-                  <span class="date">March 27, 2026</span>
-                  <span class="read-time">10 min</span>
-                </div>
-                <h3>The Laws of War Were Written for a World That Could Agree on Facts. AI Ended That World.</h3>
-                <p class="article-excerpt">The Geneva Conventions were built on a single operational premise: that verified facts could constrain state behavior in armed conflict. AI has degraded the two inputs the entire enforcement architecture depends on — simultaneously, through distinct causal mechanisms.</p>
-              </div>
+            <a href="articles/what-is-ai-native-media.html" class="archive-item" data-voice="understanding">
+              <span class="personality understanding">The Understanding</span>
+              <span class="archive-title">What Is AI-Native Media? (And Why It Took This Long to Exist)</span>
+              <span class="archive-date">March 31, 2026</span>
             </a>
+            <a href="articles/laws-of-war-ai-ended-that-world.html" class="archive-item" data-voice="witness">
+              <span class="personality witness">The Witness</span>
+              <span class="archive-title">The Laws of War Were Written for a World That Could Agree on Facts. AI Ended That World.</span>
+              <span class="archive-date">March 27, 2026</span>
+            </a>
+            <a href="articles.html" class="archive-view-all">View all articles &rarr;</a>
           </div>
         </div>
 

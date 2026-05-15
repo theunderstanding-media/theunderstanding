@@ -11,7 +11,7 @@ const BASE = isSubdir ? '../' : '';
 const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
 
 // Is this a research page?
-const RESEARCH_PAGES = ['variance-engine', 'methodology'];
+const RESEARCH_PAGES = ['variance-engine', 'methodology', 'exposure-index'];
 const isResearchPage = RESEARCH_PAGES.indexOf(currentPage) !== -1;
 
 function navActiveClass(page) {
@@ -37,6 +37,7 @@ function renderNav() {
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
+          <li><a href="${BASE}exposure-index.html"${navActiveClass('exposure-index')}>Exposure Index</a></li>
           <li><a href="${BASE}variance-engine.html"${navActiveClass('variance-engine')}>Variance Engine</a></li>
           <li><a href="${BASE}methodology.html"${navActiveClass('methodology')}>Methodology</a></li>
           <li><a href="https://theunderstandingmedia.substack.com/subscribe" class="nav-subscribe" target="_blank" rel="noopener">Subscribe</a></li>
@@ -58,6 +59,7 @@ function renderNav() {
           <li><a href="${BASE}voices.html"${navActiveClass('voices')}>Voices</a></li>
           <li><a href="${BASE}articles.html"${navActiveClass('articles')}>Articles</a></li>
           <li><a href="${BASE}variance-engine.html">Research</a></li>
+          <li><a href="${BASE}exposure-index.html"${navActiveClass('exposure-index')}>Exposure Index</a></li>
           <li><a href="${BASE}glossary.html"${navActiveClass('glossary')}>Glossary</a></li>
           <li><a href="https://theunderstandingmedia.substack.com/subscribe" class="nav-subscribe" target="_blank" rel="noopener">Subscribe</a></li>
         </ul>
