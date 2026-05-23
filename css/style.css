@@ -2020,7 +2020,7 @@ li {
    ----------------------------------------------- */
 .article-voice-banner {
   position: relative;
-  height: 160px;
+  height: 220px;
   overflow: hidden;
   margin-top: var(--nav-height);
   margin-bottom: 0;
@@ -2028,9 +2028,12 @@ li {
 .article-voice-banner .banner-portrait {
   position: absolute;
   inset: 0;
-  background-size: 100% auto; /* stretch horizontally, preserve vertical centering — fixes fox/bison eye cropping */
-  background-position: center center; /* banner images are pre-cropped with eye centered */
+  background-size: 100% auto;
+  background-position: center center;
   background-repeat: no-repeat;
+}
+.article-voice-banner.voice-witness .banner-portrait {
+  background-position: center 75%;
 }
 .article-voice-banner .banner-gradient {
   position: absolute;
