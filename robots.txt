@@ -1,3 +1,95 @@
+# robots.txt — theunderstanding.media
+# Policy: open to retrieval and citation; wary of uncompensated bulk training.
+# Last reviewed: 2026-05-30. Review quarterly (see Persona/Process audit cadence).
+#
+# Note: AI crawler user-agent strings change. Before each quarterly review,
+# confirm these against each vendor's own crawler documentation.
+
+# ----------------------------------------------------------------------
+# TIER 1 — RETRIEVAL & CITATION CRAWLERS. Fully allowed. Non-negotiable.
+# These read live pages to answer a question and cite the source.
+# This is the entire AEO play. Blocking any of these removes The
+# Understanding from AI answers. Do not disallow these.
+# ----------------------------------------------------------------------
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# ----------------------------------------------------------------------
+# TIER 2 — TRAINING CRAWLERS. Allowed now, by deliberate choice.
+# These ingest content into model training. We permit the major labs
+# because they ALSO operate the Tier 1 bots that cite us, and because an
+# AI-native publication hiding from AI training is incoherent.
+#
+# THIS IS THE REVERSIBLE SWITCH. To tighten the training stance later,
+# change "Allow: /" to "Disallow: /" on any actor below. One edit each.
+# Doing so does NOT affect Tier 1 citation visibility — the systems are
+# independent (GPTBot != OAI-SearchBot; ClaudeBot != Claude-SearchBot;
+# Google-Extended != Googlebot).
+# ----------------------------------------------------------------------
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ----------------------------------------------------------------------
+# TIER 3 — BULK AGGREGATORS. Blocked. This is the wariness line.
+# Common Crawl (CCBot) feeds countless downstream models with no
+# citation or referral back. Bytespider is known to ignore robots.txt
+# and crawl abusively. Blocking these costs nothing in AI answer
+# visibility because neither drives citations.
+# ----------------------------------------------------------------------
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# ----------------------------------------------------------------------
+# TIER 4 — EVERYTHING ELSE. Allowed by default.
+# (Compliant crawlers match the most specific group above first, so the
+# Tier 3 blocks still apply to CCBot/Bytespider despite this wildcard.)
+# ----------------------------------------------------------------------
+
 User-agent: *
 Allow: /
 
